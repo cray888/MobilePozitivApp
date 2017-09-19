@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayoutAbout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+  <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollViewAbout">
+  <LinearLayout 
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <ImageView
+          android:id="@+id/ImageView"
+          android:src="@drawable/logo"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+      <TableLayout
+          android:minWidth="25px"
+          android:minHeight="25px"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:shrinkColumns="1"
+          android:stretchColumns="1"
+          android:layout_marginTop="6.0dp"
+          android:layout_marginLeft="6.0dp"
+          android:layout_marginRight="6.0dp"
+          android:layout_marginBottom="6.0dp">
+          <TableRow>
+              <TextView
+                  android:text="Наименование:"
+                  android:textAppearance="?android:attr/textAppearanceMedium"
+                  android:layout_column="0" />
+              <TextView
+                  android:text="Мобильное приложение 'Позитив телеком'"
+                  android:textAppearance="?android:attr/textAppearanceMedium"
+                  android:layout_column="1"
+                  android:layout_marginLeft="5.0dp"
+                  android:textColor="@color/material_grey_800" />
+          </TableRow>
+          <TableRow>
+              <TextView
+                  android:text="Автор:"
+                  android:textAppearance="?android:attr/textAppearanceMedium"
+                  android:layout_column="0" />
+              <TextView
+                  android:text="Моисеенком Михаил"
+                  android:textAppearance="?android:attr/textAppearanceMedium"
+                  android:layout_column="1"
+                  android:layout_marginLeft="5.0dp"
+                  android:textColor="@color/material_grey_800" />
+          </TableRow>
+          <TableRow>
+              <TextView
+                  android:text="e-mail:"
+                  android:textAppearance="?android:attr/textAppearanceMedium"
+                  android:layout_column="0" />
+              <TextView
+                  android:text="cray888@gmail.com"
+                  android:textAppearance="?android:attr/textAppearanceMedium"
+                  android:layout_column="1"
+                  android:layout_marginLeft="5.0dp"
+                  android:textColor="@color/material_grey_800" />
+          </TableRow>
+      </TableLayout>
+  </LinearLayout>
+    </ScrollView>
+</LinearLayout>

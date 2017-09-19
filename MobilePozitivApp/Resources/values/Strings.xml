@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">MobilePozitivApp</string>
+	<string name="openDrawer">Drawer открыт</string>
+	<string name="closeDrawer">Drawer закрыт</string>
+  <string name="LoginLogo">Мобильное приложение\n\"Позитив телеком\"</string>
+  <string name="rememberMe">Запомнить меня</string>
+</resources>

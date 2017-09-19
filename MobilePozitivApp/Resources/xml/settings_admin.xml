@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory
+      android:title="Настройки сервера">
+    <EditTextPreference
+          android:key="MainServerURL"
+          android:title="Адрес основного сервера"
+          android:defaultValue="http://1c.pozitivtelecom.ru/SkladPozitiv/ws/app.1cws" />
+    <EditTextPreference
+          android:key="DebugServerURL"
+          android:title="Адрес debug сервера" 
+          android:defaultValue="http://1c.pozitivtelecom.ru/TestMihail/ws/app.1cws" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="mainServer"
+        android:summary=""
+        android:title="Основной сервер"/>
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="debug"
+        android:summary=""
+        android:title="Режим отладки"/>
+  </PreferenceCategory>
+</PreferenceScreen>

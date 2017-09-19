@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd1="http://1c.pozitivtelecom.ru" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:tns="http://1c.pozitivtelecom.ru" name="MobileAppPozitiv" targetNamespace="http://1c.pozitivtelecom.ru" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns:xs1="http://1c.pozitivtelecom.ru" elementFormDefault="qualified" targetNamespace="http://1c.pozitivtelecom.ru" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="Init">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InitResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllowGroups">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllowGroupsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllowElements">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Ref" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllowElementsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDataList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Ref" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDataListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDataByRef">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="RefListMod" type="xs:string" />
+            <xs:element name="Ref" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDataByRefResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetDataByRef">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="RefListMod" type="xs:string" />
+            <xs:element name="Ref" type="xs:string" />
+            <xs:element name="Data" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetDataByRefResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InitApp">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Data" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InitAppResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPeriodicData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Data" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPeriodicDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetNews">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetNewsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetGroups">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetGroupsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetElements">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Ref" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetElementsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Ref" type="xs:string" />
+            <xs:element name="SessionPar" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="RefListMod" type="xs:string" />
+            <xs:element name="Ref" type="xs:string" />
+            <xs:element name="SessionPar" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="RefListMod" type="xs:string" />
+            <xs:element name="Ref" type="xs:string" />
+            <xs:element name="Data" type="xs:string" />
+            <xs:element name="SessionPar" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetFile">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Ref" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetFileResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetFile">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Data" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetFileResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMessage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Data" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetMessage">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Data" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SetMessageResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="InitRequestMessage">
+    <part name="parameters" element="tns:Init" />
+  </message>
+  <message name="InitResponseMessage">
+    <part name="parameters" element="tns:InitResponse" />
+  </message>
+  <message name="GetAllowGroupsRequestMessage">
+    <part name="parameters" element="tns:GetAllowGroups" />
+  </message>
+  <message name="GetAllowGroupsResponseMessage">
+    <part name="parameters" element="tns:GetAllowGroupsResponse" />
+  </message>
+  <message name="GetAllowElementsRequestMessage">
+    <part name="parameters" element="tns:GetAllowElements" />
+  </message>
+  <message name="GetAllowElementsResponseMessage">
+    <part name="parameters" element="tns:GetAllowElementsResponse" />
+  </message>
+  <message name="GetDataListRequestMessage">
+    <part name="parameters" element="tns:GetDataList" />
+  </message>
+  <message name="GetDataListResponseMessage">
+    <part name="parameters" element="tns:GetDataListResponse" />
+  </message>
+  <message name="GetDataByRefRequestMessage">
+    <part name="parameters" element="tns:GetDataByRef" />
+  </message>
+  <message name="GetDataByRefResponseMessage">
+    <part name="parameters" element="tns:GetDataByRefResponse" />
+  </message>
+  <message name="SetDataByRefRequestMessage">
+    <part name="parameters" element="tns:SetDataByRef" />
+  </message>
+  <message name="SetDataByRefResponseMessage">
+    <part name="parameters" element="tns:SetDataByRefResponse" />
+  </message>
+  <message name="InitAppRequestMessage">
+    <part name="parameters" element="tns:InitApp" />
+  </message>
+  <message name="InitAppResponseMessage">
+    <part name="parameters" element="tns:InitAppResponse" />
+  </message>
+  <message name="GetPeriodicDataRequestMessage">
+    <part name="parameters" element="tns:GetPeriodicData" />
+  </message>
+  <message name="GetPeriodicDataResponseMessage">
+    <part name="parameters" element="tns:GetPeriodicDataResponse" />
+  </message>
+  <message name="GetNewsRequestMessage">
+    <part name="parameters" element="tns:GetNews" />
+  </message>
+  <message name="GetNewsResponseMessage">
+    <part name="parameters" element="tns:GetNewsResponse" />
+  </message>
+  <message name="GetGroupsRequestMessage">
+    <part name="parameters" element="tns:GetGroups" />
+  </message>
+  <message name="GetGroupsResponseMessage">
+    <part name="parameters" element="tns:GetGroupsResponse" />
+  </message>
+  <message name="GetElementsRequestMessage">
+    <part name="parameters" element="tns:GetElements" />
+  </message>
+  <message name="GetElementsResponseMessage">
+    <part name="parameters" element="tns:GetElementsResponse" />
+  </message>
+  <message name="GetListRequestMessage">
+    <part name="parameters" element="tns:GetList" />
+  </message>
+  <message name="GetListResponseMessage">
+    <part name="parameters" element="tns:GetListResponse" />
+  </message>
+  <message name="GetDataRequestMessage">
+    <part name="parameters" element="tns:GetData" />
+  </message>
+  <message name="GetDataResponseMessage">
+    <part name="parameters" element="tns:GetDataResponse" />
+  </message>
+  <message name="SetDataRequestMessage">
+    <part name="parameters" element="tns:SetData" />
+  </message>
+  <message name="SetDataResponseMessage">
+    <part name="parameters" element="tns:SetDataResponse" />
+  </message>
+  <message name="GetFileRequestMessage">
+    <part name="parameters" element="tns:GetFile" />
+  </message>
+  <message name="GetFileResponseMessage">
+    <part name="parameters" element="tns:GetFileResponse" />
+  </message>
+  <message name="SetFileRequestMessage">
+    <part name="parameters" element="tns:SetFile" />
+  </message>
+  <message name="SetFileResponseMessage">
+    <part name="parameters" element="tns:SetFileResponse" />
+  </message>
+  <message name="GetMessageRequestMessage">
+    <part name="parameters" element="tns:GetMessage" />
+  </message>
+  <message name="GetMessageResponseMessage">
+    <part name="parameters" element="tns:GetMessageResponse" />
+  </message>
+  <message name="SetMessageRequestMessage">
+    <part name="parameters" element="tns:SetMessage" />
+  </message>
+  <message name="SetMessageResponseMessage">
+    <part name="parameters" element="tns:SetMessageResponse" />
+  </message>
+  <portType name="MobileAppPozitivPortType">
+    <operation name="Init">
+      <input message="tns:InitRequestMessage" />
+      <output message="tns:InitResponseMessage" />
+    </operation>
+    <operation name="GetAllowGroups">
+      <input message="tns:GetAllowGroupsRequestMessage" />
+      <output message="tns:GetAllowGroupsResponseMessage" />
+    </operation>
+    <operation name="GetAllowElements">
+      <input message="tns:GetAllowElementsRequestMessage" />
+      <output message="tns:GetAllowElementsResponseMessage" />
+    </operation>
+    <operation name="GetDataList">
+      <input message="tns:GetDataListRequestMessage" />
+      <output message="tns:GetDataListResponseMessage" />
+    </operation>
+    <operation name="GetDataByRef">
+      <input message="tns:GetDataByRefRequestMessage" />
+      <output message="tns:GetDataByRefResponseMessage" />
+    </operation>
+    <operation name="SetDataByRef">
+      <input message="tns:SetDataByRefRequestMessage" />
+      <output message="tns:SetDataByRefResponseMessage" />
+    </operation>
+    <operation name="InitApp">
+      <input message="tns:InitAppRequestMessage" />
+      <output message="tns:InitAppResponseMessage" />
+    </operation>
+    <operation name="GetPeriodicData">
+      <input message="tns:GetPeriodicDataRequestMessage" />
+      <output message="tns:GetPeriodicDataResponseMessage" />
+    </operation>
+    <operation name="GetNews">
+      <input message="tns:GetNewsRequestMessage" />
+      <output message="tns:GetNewsResponseMessage" />
+    </operation>
+    <operation name="GetGroups">
+      <input message="tns:GetGroupsRequestMessage" />
+      <output message="tns:GetGroupsResponseMessage" />
+    </operation>
+    <operation name="GetElements">
+      <input message="tns:GetElementsRequestMessage" />
+      <output message="tns:GetElementsResponseMessage" />
+    </operation>
+    <operation name="GetList">
+      <input message="tns:GetListRequestMessage" />
+      <output message="tns:GetListResponseMessage" />
+    </operation>
+    <operation name="GetData">
+      <input message="tns:GetDataRequestMessage" />
+      <output message="tns:GetDataResponseMessage" />
+    </operation>
+    <operation name="SetData">
+      <input message="tns:SetDataRequestMessage" />
+      <output message="tns:SetDataResponseMessage" />
+    </operation>
+    <operation name="GetFile">
+      <input message="tns:GetFileRequestMessage" />
+      <output message="tns:GetFileResponseMessage" />
+    </operation>
+    <operation name="SetFile">
+      <input message="tns:SetFileRequestMessage" />
+      <output message="tns:SetFileResponseMessage" />
+    </operation>
+    <operation name="GetMessage">
+      <input message="tns:GetMessageRequestMessage" />
+      <output message="tns:GetMessageResponseMessage" />
+    </operation>
+    <operation name="SetMessage">
+      <input message="tns:SetMessageRequestMessage" />
+      <output message="tns:SetMessageResponseMessage" />
+    </operation>
+  </portType>
+  <binding name="MobileAppPozitivSoapBinding" type="tns:MobileAppPozitivPortType">
+    <soapbind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Init">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:Init" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllowGroups">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetAllowGroups" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllowElements">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetAllowElements" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDataList">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetDataList" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDataByRef">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetDataByRef" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetDataByRef">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:SetDataByRef" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="InitApp">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:InitApp" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPeriodicData">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetPeriodicData" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetNews">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetNews" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetGroups">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetGroups" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetElements">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetElements" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetList">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetList" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetData">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetData" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetData">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:SetData" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFile">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetFile" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetFile">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:SetFile" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMessage">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetMessage" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetMessage">
+      <soapbind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:SetMessage" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="MobileAppPozitivSoap12Binding" type="tns:MobileAppPozitivPortType">
+    <soap12bind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Init">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:Init" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllowGroups">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetAllowGroups" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAllowElements">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetAllowElements" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDataList">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetDataList" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDataByRef">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetDataByRef" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetDataByRef">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:SetDataByRef" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="InitApp">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:InitApp" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPeriodicData">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetPeriodicData" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetNews">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetNews" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetGroups">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetGroups" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetElements">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetElements" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetList">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetList" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetData">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetData" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetData">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:SetData" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetFile">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetFile" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetFile">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:SetFile" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMessage">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:GetMessage" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SetMessage">
+      <soap12bind:operation soapAction="http://1c.pozitivtelecom.ru#MobileAppPozitiv:SetMessage" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="MobileAppPozitiv">
+    <port name="MobileAppPozitivSoap" binding="tns:MobileAppPozitivSoapBinding">
+      <documentation>
+        <wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1" />
+      </documentation>
+      <soapbind:address location="http://1c.pozitivtelecom.ru/TestMihail/ws/app.1cws" />
+    </port>
+    <port name="MobileAppPozitivSoap12" binding="tns:MobileAppPozitivSoap12Binding">
+      <soap12bind:address location="http://1c.pozitivtelecom.ru/TestMihail/ws/app.1cws" />
+    </port>
+  </service>
+</definitions>

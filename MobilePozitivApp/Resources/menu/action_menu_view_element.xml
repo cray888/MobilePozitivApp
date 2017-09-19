@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:myapp="http://schemas.android.com/apk/res-auto">
+
+  <item android:id="@+id/action_save_dataView"
+		android:icon="@drawable/ic_action_save"
+		android:title="Закрыть"
+		myapp:showAsAction="always"/>
+  
+	<item android:id="@+id/action_refresh_dataView"
+		android:icon="@drawable/ic_action_refresh"
+		android:title="Сохранить"
+		myapp:showAsAction="always" />
+
+	<item android:id="@+id/action_help_dataView"
+		android:icon="@drawable/ic_action_help"
+		android:title="Справка"
+		myapp:showAsAction="always"/>
+
+</menu>
+
