@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Text;
 
 using Android.App;
@@ -6,9 +7,14 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Support.V7.App;
+using Android.Support.V7.Widget;
+using Android.Text;
 using Android.Webkit;
-using Mono.CSharp;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Graphics;
+using Java.IO;
+using Console = System.Console;
+using File = Java.IO.File;
 
 namespace MobilePozitivApp
 {
@@ -17,9 +23,13 @@ namespace MobilePozitivApp
     {
         WebView mWebView;
         private SupportToolbar mToolbar;
+        private ShareActionProvider mShareAction;
 
         string mName;
         string mHtmlBase64;
+        private string mReportAddr;
+
+        private string html;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -39,7 +49,10 @@ namespace MobilePozitivApp
             SupportActionBar.SetDisplayShowHomeEnabled(true);
 
             var base64EncodedBytes = Convert.FromBase64String(mHtmlBase64);
-            string html = Encoding.UTF8.GetString(base64EncodedBytes);
+            html = Encoding.UTF8.GetString(base64EncodedBytes);
+
+            mReportAddr = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath +
+                          "/Download/1C_Files/Report.html";
 
             mWebView = (WebView)FindViewById(Resource.Id.WebView);
             mWebView.Settings.BuiltInZoomControls = true;
@@ -81,10 +94,32 @@ namespace MobilePozitivApp
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.action_menu_main, menu);
-            IMenuItem mMenuItem = menu.FindItem(Resource.Id.action_search);
-            mMenuItem.SetVisible(false);
+            MenuInflater.Inflate(Resource.Menu.action_menu_web, menu);
+            var mMenuItem = menu.FindItem(Resource.Id.action_share);
+            var overflow_provider = (ShareActionProvider)Android.Support.V4.View.MenuItemCompat.GetActionProvider(mMenuItem);
+            overflow_provider.ShareTargetSelected += Overflow_provider_ShareTargetSelected;
+            overflow_provider.SetShareIntent(CreateIntent());
             return base.OnCreateOptionsMenu(menu);
+        }
+
+        private void Overflow_provider_ShareTargetSelected(object sender, ShareActionProvider.ShareTargetSelectedEventArgs e)
+        {
+            File folder = new File(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/Download/1C_Files/");
+            if (folder.Exists() == false) folder.Mkdir();
+
+            using (StreamWriter write = new StreamWriter(mReportAddr, false, Encoding.UTF8))
+            {
+                write.Write(html);
+            }
+        }
+
+        Intent CreateIntent()
+        {
+            var sendPictureIntent = new Intent(Intent.ActionSend);
+            sendPictureIntent.SetType("text/*");
+            sendPictureIntent.PutExtra(Intent.ExtraSubject, "Отчет \"" + mName + "\"");
+            sendPictureIntent.PutExtra(Intent.ExtraStream, Android.Net.Uri.FromFile(new File(mReportAddr)));
+            return sendPictureIntent;
         }
     }
 

@@ -99,6 +99,7 @@ namespace MobilePozitivApp
                     //SetDataByRef("Сохранить", "save");
                     return true;
                 case Resource.Id.action_refresh_dataView:
+                    Recreate();
                     return true;
                 case Resource.Id.action_help_dataView:
                     return true;
@@ -113,8 +114,6 @@ namespace MobilePozitivApp
             MenuInflater.Inflate(Resource.Menu.action_menu_view_element, menu);
             IMenuItem mMenuItem;
             mMenuItem = menu.FindItem(Resource.Id.action_save_dataView);
-            mMenuItem.SetVisible(false);
-            mMenuItem = menu.FindItem(Resource.Id.action_refresh_dataView);
             mMenuItem.SetVisible(false);
             return base.OnCreateOptionsMenu(menu);
         }

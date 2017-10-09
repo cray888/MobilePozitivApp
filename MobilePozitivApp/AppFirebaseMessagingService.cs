@@ -18,8 +18,12 @@ namespace MobilePozitivApp
         {
             if (message.GetNotification() != null)
             {
-                int nid = message.Data.ContainsKey("id") ? AppVariable.nIDFcm: int.Parse(message.Data["id"]);
-                ShowNotification(message.GetNotification().Title, message.GetNotification().Body, nid);
+                int nid = message.Data.ContainsKey("id") ? int.Parse(message.Data["id"]) : AppVariable.nIDFcm;
+                string nref = message.Data.ContainsKey("ref") ? message.Data["ref"] : string.Empty;
+                string nreflistmod = message.Data.ContainsKey("reflistmod") ? message.Data["reflistmod"] : string.Empty;
+                string nname = message.Data.ContainsKey("name") ? message.Data["name"] : string.Empty;
+
+                ShowNotification(message.GetNotification().Title, message.GetNotification().Body, nid, nref, nreflistmod, nname);
             }
             else
             {
@@ -57,22 +61,33 @@ namespace MobilePozitivApp
             }
         }
 
-        void ShowNotification(string messageTytle, string messageBody, int id)
+        void ShowNotification(string messageTytle, string messageBody, int id, string Ref, string RefListMod, string Name)
         {
-            var intent = new Intent(this, typeof(ActivityMain));
-            intent.PutExtra("openmessages", true);
-            intent.AddFlags(ActivityFlags.ClearTop);            
+            Intent intent;
+            if (Ref != string.Empty && RefListMod != string.Empty)
+            {
+                intent = new Intent(this, typeof(ActivityDataView));
+                intent.PutExtra("reflistmod", RefListMod);
+                intent.PutExtra("ref", Ref);
+                intent.PutExtra("name", Name);
+            }
+            else
+            { 
+                intent = new Intent(this, typeof(ActivityMain));
+                intent.PutExtra("openmessages", true);
+            }
+            
             var pendingIntent = PendingIntent.GetActivity(this, AppVariable.nIDFcm, intent, PendingIntentFlags.OneShot);
-            var defaultSoudnUri = RingtoneManager.GetDefaultUri(RingtoneType.Notification);
             var notificationBuilder = new Notification.Builder(this)
                 .SetSmallIcon(Resource.Drawable.ic_action_unread)
                 .SetContentTitle(messageTytle)
                 .SetContentText(messageBody)
                 .SetAutoCancel(true)
-                .SetSound(defaultSoudnUri)
+                .SetDefaults(NotificationDefaults.Lights | NotificationDefaults.Sound | NotificationDefaults.Vibrate)
                 .SetContentIntent(pendingIntent);
+            Notification notification = new Notification.BigTextStyle(notificationBuilder).BigText(messageBody).Build();
             var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
-            notificationManager.Notify(id, notificationBuilder.Build());
+            notificationManager.Notify(id, notification);
         }
     }
 }

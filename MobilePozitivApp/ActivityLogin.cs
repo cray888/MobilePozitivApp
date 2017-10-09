@@ -36,8 +36,6 @@ namespace MobilePozitivApp
         private AppUpdate mUpdateApp;
         private ProgressDialog mProgressDialog;
 
-        private bool isMessage;
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -45,7 +43,7 @@ namespace MobilePozitivApp
 
             bool isUpdate = Intent.GetBooleanExtra("update", false);
             bool islogout = Intent.GetBooleanExtra("logout", false);
-            isMessage = Intent.GetStringExtra("isMessage") != null;
+            
 
             mProgressDialog = new ProgressDialog(this);
             mProgressDialog.Indeterminate = true;
@@ -254,7 +252,10 @@ namespace MobilePozitivApp
                 }
 
                 Intent intent = new Intent(this, typeof(ActivityMain));
-                intent.PutExtra("openmessages", isMessage);
+                intent.PutExtra("ismessage", Intent.GetStringExtra("isMessage") != null);
+                intent.PutExtra("ref", Intent.GetStringExtra("ref"));
+                intent.PutExtra("reflistmod", Intent.GetStringExtra("reflistmod"));
+                intent.PutExtra("name", Intent.GetStringExtra("name"));
                 StartActivity(intent);                
                 Finish();                
             }

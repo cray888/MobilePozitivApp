@@ -50,7 +50,10 @@ namespace MobilePozitivApp
 
             SetContentView(Resource.Layout.ActivityMain);
 
-            bool isMassage = Intent.GetBooleanExtra("openmessages", false);
+            bool mMessage = Intent.GetBooleanExtra("ismessage", false);            
+            string mRef = Intent.GetStringExtra("ref");
+            string mRefListMod = Intent.GetStringExtra("reflistmod");
+            string mName = Intent.GetStringExtra("name");
 
             //Переменные объектов активити
             mToolbar =  FindViewById<SupportToolbar>(Resource.Id.Toolbar);
@@ -82,7 +85,7 @@ namespace MobilePozitivApp
             mLeftDrawer.Tag = 0;
             mRightDrawer.Tag = 1;
 
-            mToolbar.Title = isMassage ? "Сообщения" : "Главная страница";
+            mToolbar.Title = mMessage ? "Сообщения" : "Главная страница";
             SetSupportActionBar(mToolbar);            
 
             UpdateLeftDrawer();
@@ -116,15 +119,24 @@ namespace MobilePozitivApp
             tx.Add(Resource.Id.FragmentLayout, docsFragment);
             tx.Add(Resource.Id.FragmentLayout, ReportsFragment);
             tx.Add(Resource.Id.FragmentLayout, DataProcessorsFragment);
-            tx.Hide(isMassage ? (SupportFragment)Fragment: (SupportFragment)messagesFragment);
+            tx.Hide(mMessage ? (SupportFragment)Fragment: (SupportFragment)messagesFragment);
             tx.Hide(tasksFragment);
             tx.Hide(directoriesFragment);
             tx.Hide(docsFragment);
             tx.Hide(ReportsFragment);
             tx.Hide(DataProcessorsFragment);
 
-            mCurrentFragment = isMassage ? (SupportFragment)messagesFragment : (SupportFragment)Fragment;
+            mCurrentFragment = mMessage ? (SupportFragment)messagesFragment : (SupportFragment)Fragment;
             tx.Commit();
+
+            if (mRef != null && mRefListMod != null)
+            {
+                Intent intent = new Intent(this, typeof(ActivityDataView));
+                intent.PutExtra("reflistmod", mRefListMod);
+                intent.PutExtra("ref", mRef);
+                intent.PutExtra("name", mName);
+                StartActivity(intent);
+            }
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

@@ -34,7 +34,7 @@ namespace MobilePozitivApp
         private EditText mCurentEditText;
 
         private int curentReciverID = 0;
-        private int lastReciverID = 0;
+        //private int lastReciverID = 0;
         private Dictionary<int, string> Recivers;
 
         protected override void OnCreate(Bundle savedInstanceState)

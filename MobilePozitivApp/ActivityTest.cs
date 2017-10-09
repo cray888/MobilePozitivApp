@@ -77,6 +77,13 @@ namespace MobilePozitivApp
                 StartActivity(IntentMessage);
             };
 
+            Button mButtonActivityMap = FindViewById<Button>(Resource.Id.activityMap);
+            mButtonActivityMap.Click += (sender, args) =>
+            {
+                Intent IntentMessage = new Intent(this, typeof(ActivityMaps));
+                StartActivity(IntentMessage);
+            };
+
 
             // Setup Toolbar
             SetSupportActionBar(toolbar);

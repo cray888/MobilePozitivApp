@@ -35,7 +35,6 @@ namespace MobilePozitivApp
         public override void OnLowMemory()
         {
             base.OnLowMemory();
-            //SaveVariable();
         }
 
         public override void OnTerminate()
@@ -43,39 +42,6 @@ namespace MobilePozitivApp
             base.OnTerminate();
             UnregisterActivityLifecycleCallbacks(this);
         }
-
-        /*void SaveVariable(bool clear = false)
-        {
-            ISharedPreferences mPrefs = PreferenceManager.GetDefaultSharedPreferences(this);
-            ISharedPreferencesEditor mPerfsEditor = mPrefs.Edit();
-
-            if (clear)
-            {
-                mPerfsEditor.PutBoolean("vIsOnline", false);
-                mPerfsEditor.PutString("vUser", "");
-                mPerfsEditor.PutString("vPassword", "");
-            }
-            else
-            {
-                mPerfsEditor.PutBoolean("isOnline", AppVariable.Variable.isOnline);
-                mPerfsEditor.PutString("User", AppVariable.Variable.User);
-                mPerfsEditor.PutString("Password", AppVariable.Variable.Passwod);
-            }
-
-            mPerfsEditor.Apply();
-        }*/
-
-        /*void LoadVariable()
-        {
-            if (AppVariable.Variable.isOnline == false)
-            {
-                ISharedPreferences mPrefs = PreferenceManager.GetDefaultSharedPreferences(this);
-                AppVariable.Variable.isOnline = mPrefs.GetBoolean("visOnline", false);
-                AppVariable.Variable.User = mPrefs.GetString("vUser", "");
-                AppVariable.Variable.Passwod = mPrefs.GetString("vPasswod", "");
-                SaveVariable(true);
-            }
-        }*/
 
         public void CheckSession(Activity Contex)
         {
@@ -90,7 +56,7 @@ namespace MobilePozitivApp
         ///////////////////////////////////
         public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
         {
-            if (activity.GetType() != typeof(ActivityLogin)) CheckSession(activity);
+            if (activity.GetType() != typeof(ActivitySplashScreen) && activity.GetType() != typeof(ActivityLogin)) CheckSession(activity);
         }
 
         public void OnActivityDestroyed(Activity activity)

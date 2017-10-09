@@ -17,6 +17,7 @@ namespace MobilePozitivApp
 
         string downloadsPath;
         string localPathFile;
+        string updateURLZip;
 
         public AppUpdate(Activity context)
         {
@@ -25,27 +26,40 @@ namespace MobilePozitivApp
 
         public bool CheckUpdate(int curentVersion)
         {
+            string DefaultUpdateURL = "http://1c.pozitivtelecom.ru/MobileApp";
             downloadsPath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/Download";
             string localPathFileApk = System.IO.Path.Combine(downloadsPath, "app.apk");
             Java.IO.File mFileApk = new Java.IO.File(localPathFileApk);
             if (mFileApk.Exists()) mFileApk.Delete();
 
             mWebClient = new WebClient();
-            var url = new Uri("http://1c.pozitivtelecom.ru/MobileApp/version.json");
-            string stringResult;
-            JValue jVersion;
 
+            Uri url;
+
+            if (AppPreferences.Preferences.GetPreferences("debug", false))
+            {
+                url = new Uri(AppPreferences.Preferences.GetPreferences("UpdateURL", DefaultUpdateURL) + "/version_debug.json");
+            }
+            else
+            {
+                url = new Uri(AppPreferences.Preferences.GetPreferences("debug", DefaultUpdateURL) + "/version.json");
+            }
+
+            string stringResult;
+            JValue jVersion, jUpdateZipURL;
             try
             {
                 stringResult = mWebClient.DownloadString(url);
                 JObject jsonResult = JObject.Parse(stringResult);
-                jVersion = (JValue)jsonResult["Version"];                
+                jVersion = (JValue)jsonResult["Version"];
+                jUpdateZipURL = (JValue)jsonResult["URL"];
             }
             catch
             {
                 return false;
             }
-            long version = (long)jVersion.Value;
+            updateURLZip = (string)jUpdateZipURL.Value;
+            long version = (long)jVersion.Value;            
             return curentVersion != version;
         }
 
@@ -55,7 +69,7 @@ namespace MobilePozitivApp
             mWebClient.DownloadFileCompleted += WebClient_DownloadFileCompleted;
             mWebClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
 
-            var url = new Uri("http://1c.pozitivtelecom.ru/MobileApp/app.zip");
+            var url = new Uri(updateURLZip);
 
             string localFilename = "app.zip";
             localPathFile = System.IO.Path.Combine(downloadsPath, localFilename);

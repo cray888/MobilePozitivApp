@@ -56,6 +56,11 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:id="@+id/activityMessage" />
+    <Button
+      android:text="Map"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/activityMap" />
   </LinearLayout>
     <android.support.design.widget.TabLayout
         android:id="@+id/sliding_tabs"

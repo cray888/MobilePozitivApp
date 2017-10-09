@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:myapp="http://schemas.android.com/apk/res-auto">
+
+	<item android:id="@+id/action_refresh"
+		android:icon="@drawable/ic_action_refresh"
+		android:title="Обновить"
+		myapp:showAsAction="always" />
+
+  <item android:id="@+id/action_share"
+    myapp:showAsAction="ifRoom"
+    android:title="Share"
+    myapp:actionProviderClass="android.support.v7.widget.ShareActionProvider" />
+  
+	<item android:id="@+id/action_help"
+		android:icon="@drawable/ic_action_help"
+		android:title="Справка"
+		myapp:showAsAction="always"/> 
+
+</menu>
+

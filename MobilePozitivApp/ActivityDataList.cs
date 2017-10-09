@@ -10,10 +10,13 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.App;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
+using AlertDialog = Android.Support.V7.App.AlertDialog;
 using Android.Support.V4.Widget;
 using Android.Support.Design.Widget;
 using System.Collections.Generic;
 using Android.Views.InputMethods;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MobilePozitivApp
 {
@@ -42,6 +45,10 @@ namespace MobilePozitivApp
         private bool mAnimatedDown;
         private bool mIsAnimating;
 
+        private Dialog mDialog;
+        private List<string> mListDataSet;
+        private int mSelectedItemPosition;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -65,7 +72,8 @@ namespace MobilePozitivApp
             mFloatingActionButton.Click += Fab_Click;
 
             mDataList = FindViewById<ListView>(Resource.Id.ListView);
-            mDataList.ItemClick += MDataList_ItemClick;
+            if (mRead || mIsSelectedForm) mDataList.ItemClick += MDataList_ItemClick;
+            if (mDelete) mDataList.ItemLongClick += MDataList_ItemLongClick;
 
             mEemptyList = FindViewById<TextView>(Resource.Id.ViewEmpty);
 
@@ -84,7 +92,73 @@ namespace MobilePozitivApp
             mSearchLinearLayout.Alpha = 0;
             mContainer.BringToFront();
 
+            mListDataSet = new List<string>();
+            mListDataSet.Add("Установить/снять пометку на удаление");
+            ArrayAdapter<string> mListAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mListDataSet);
+
+            AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(this)
+                .SetTitle("Выберите действие:")
+                .SetAdapter(mListAdapter, OnSelectAction);
+            mDialog = mAlertDialog.Create();
+
             UpdateList();
+        }
+        
+        private void OnSelectAction(object sender, DialogClickEventArgs e)
+        {
+            switch (mListDataSet[e.Which])
+            {
+                case "Пометить на удаление":
+                    SetDeleteMark();
+                    break;
+            }
+        }
+
+        private void SetDeleteMark()
+        {
+            AlertDialog.Builder quitDialog = new AlertDialog.Builder(this);
+            quitDialog.SetTitle("Вы уверены?");
+            quitDialog.SetPositiveButton("Да", (senderAlert, args) =>
+            {
+                var item = mAdapterDataList.GetItemAtPosition(mSelectedItemPosition);
+
+                Dictionary<long, ElementData> mCommands = new Dictionary<long, ElementData>();
+                mCommands.Add(0, new ElementData() { Name = "delete", Data = "delete" });
+                string output = JsonConvert.SerializeObject(mCommands);
+                DataSetWS dataSetWS = new DataSetWS();
+                dataSetWS.SetDataCompleted += DataSetWS_SetDataCompleted;
+                dataSetWS.SetDataAsync(mRef, item.Ref, output, AppVariable.Variable.getSessionParametersJSON());
+                mCommands.Remove(0);
+            });
+            quitDialog.SetNegativeButton("Нет", (senderAlert, args) =>
+            {
+
+            });
+            Dialog dialog = quitDialog.Create();
+            dialog.Show();
+        }
+
+        private void DataSetWS_SetDataCompleted(object sender, MobileAppPozitiv.SetDataCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                if (e.Cancelled)
+                {
+                    Toast.MakeText(this, "Отменено", ToastLength.Short).Show();
+                }
+                else
+                {
+                    JObject jsonResult = JObject.Parse(e.Result);
+                    string Result = jsonResult["Result"].Value<string>();
+                    string Message = jsonResult["Message"].Value<string>();
+                    Toast.MakeText(this, Message, ToastLength.Long).Show();
+                    UpdateList();
+                }
+            }
+            else
+            {
+                Toast.MakeText(this, e.Error.Message, ToastLength.Long).Show();
+            }
         }
 
         private void Fab_Click(object sender, EventArgs e)
@@ -116,6 +190,13 @@ namespace MobilePozitivApp
                 intent.PutExtra("name", item.Name);
                 StartActivityForResult(intent, 1);
             }            
+        }
+
+        private void MDataList_ItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
+        {
+            //var item = this.mAdapterDataList.GetItemAtPosition(e.Position);
+            mSelectedItemPosition = e.Position;
+            mDialog.Show();
         }
 
         //Вызывается при закрытии формы редактирования

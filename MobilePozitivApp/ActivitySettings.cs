@@ -26,11 +26,7 @@ namespace MobilePozitivApp
 
             string settings = Intent.GetStringExtra("settings");
 
-            //Работа с глобальными переменными
-            AppApplication myApp = (AppApplication)ApplicationContext;
-
             toolbar = FindViewById<SupportToolbar>(Resource.Id.my_toolbar);
-
             SetSupportActionBar(toolbar);
             SupportActionBar.Title = "Настройки";
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);

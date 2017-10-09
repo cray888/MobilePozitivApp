@@ -10,6 +10,10 @@
           android:key="DebugServerURL"
           android:title="Адрес debug сервера" 
           android:defaultValue="http://1c.pozitivtelecom.ru/TestMihail/ws/app.1cws" />
+    <EditTextPreference
+          android:key="UpdateURL"
+          android:title="Адрес Update сервера"
+          android:defaultValue="http://1c.pozitivtelecom.ru/MobileApp/" />
     <SwitchPreference
         android:defaultValue="true"
         android:key="mainServer"

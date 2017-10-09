@@ -87,7 +87,7 @@ namespace MobilePozitivApp
                     break;
                 case "Удалить":
                     DeleteMessage();
-                    return;
+                    break;
             }
         }
 

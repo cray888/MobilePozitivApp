@@ -11,6 +11,8 @@ using Android.Support.V7.App;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
+using ZXing.Mobile;
+
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace MobilePozitivApp
@@ -466,6 +468,46 @@ namespace MobilePozitivApp
                             StartActivity(intentFiles);
                         };
                         mNewRow.AddView(nButtonTextView);
+                        break;
+                    case "barcode":
+                        string BarCodeEditValue = (string)((JValue)jValue).Value;
+
+                        mElements.Add(Id, new ElementData() { Name = Name, Data = BarCodeEditValue });
+
+                        EditText nTextBarCodeEdit = new EditText(this) { Id = (int)Id };
+                        nTextBarCodeEdit.Text = BarCodeEditValue;
+                        mNewRow.AddView(nTextBarCodeEdit);
+
+                        ImageButton nButtonBarCodeEdit = new ImageButton(this) { Id = (int)Id };
+                        nButtonBarCodeEdit.SetImageResource(Resource.Drawable.ic_action_camera);
+                        nButtonBarCodeEdit.Click += async (bsender, bargs) => {
+                            /*if (mDialogLoading == false)
+                            {
+                                mDialogLoading = true;
+                                DateTime currently = (mElements[Id].Data == null) ? DateTime.Now : mElements[Id].Data;
+                                DatePickerDialog ddialog = new DatePickerDialog(this, (dsender, dargs) => {
+                                    string strDate = ((DateTime)dargs.Date).ToShortDateString();
+                                    nTextDateEdit.Text = strDate;
+                                    mElements[Id].Data = (DateTime)dargs.Date;
+                                    mDialogLoading = false;
+                                }, currently.Year, currently.Month - 1, currently.Day);
+                                ddialog.Show();
+                                ddialog.CancelEvent += (dsender, dargs) =>
+                                {
+                                    mDialogLoading = false;
+                                };
+                            }*/
+
+                            MobileBarcodeScanner.Initialize(Application);
+                            var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+                            var result = await scanner.Scan();
+                            if (result != null)
+                            { 
+                                nTextBarCodeEdit.Text = result.Text;
+                                mElements[Id].Data = result.Text;
+                            }
+                        };
+                        mNewRow.AddView(nButtonBarCodeEdit);
                         break;
                     default:
 
