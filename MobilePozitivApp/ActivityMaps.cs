@@ -18,6 +18,7 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using Java.Net;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
+using Android.Graphics;
 
 namespace MobilePozitivApp
 {
