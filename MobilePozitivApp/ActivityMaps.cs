@@ -140,7 +140,7 @@ namespace MobilePozitivApp
             {
                 return new URL(s);
             }
-            catch (Exception e)
+            catch //(Exception e)
             {
                 return null;
             }
@@ -168,7 +168,7 @@ namespace MobilePozitivApp
             Build();
         }
 
-        public async Task Build()
+        private async Task Build()
         {
             await Task.Run(() => GetData());
         }
@@ -209,7 +209,7 @@ namespace MobilePozitivApp
                 double longitude = double.Parse(posArr[0]);
                 return new LatLng(latitude, longitude);
             }
-            catch (Exception e)
+            catch //(Exception e)
             {
                 pos = pos.Replace('.', ',');
                 posArr = pos.Split(' ');

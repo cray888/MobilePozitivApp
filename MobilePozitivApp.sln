@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilePozitivApp", "MobilePozitivApp\MobilePozitivApp.csproj", "{12E45872-B46B-4A96-912B-5459DB21112C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexMapKit", "YandexMapKit\YandexMapKit.csproj", "{0A9EBCDF-2FC7-4530-837C-202CE1893840}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{12E45872-B46B-4A96-912B-5459DB21112C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12E45872-B46B-4A96-912B-5459DB21112C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{12E45872-B46B-4A96-912B-5459DB21112C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0A9EBCDF-2FC7-4530-837C-202CE1893840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9EBCDF-2FC7-4530-837C-202CE1893840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9EBCDF-2FC7-4530-837C-202CE1893840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9EBCDF-2FC7-4530-837C-202CE1893840}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

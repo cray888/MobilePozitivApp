@@ -67,13 +67,13 @@ namespace MobilePozitivApp
             mSwipeRefreshLayout.SetColorSchemeResources(Android.Resource.Color.HoloBlueBright, Android.Resource.Color.HoloBlueDark, Android.Resource.Color.HoloGreenLight, Android.Resource.Color.HoloRedLight);
             mSwipeRefreshLayout.Refresh += mSwipeRefreshLayout_Refresh;
 
-            mFloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.Fab);
-            mFloatingActionButton.Visibility = mEdit ? ViewStates.Visible : ViewStates.Invisible;
-            mFloatingActionButton.Click += Fab_Click;
-
             mDataList = FindViewById<ListView>(Resource.Id.ListView);
             if (mRead || mIsSelectedForm) mDataList.ItemClick += MDataList_ItemClick;
             if (mDelete) mDataList.ItemLongClick += MDataList_ItemLongClick;
+
+            mFloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.Fab);
+            mFloatingActionButton.Visibility = mEdit ? ViewStates.Visible : ViewStates.Invisible;
+            mFloatingActionButton.Click += Fab_Click;
 
             mEemptyList = FindViewById<TextView>(Resource.Id.ViewEmpty);
 

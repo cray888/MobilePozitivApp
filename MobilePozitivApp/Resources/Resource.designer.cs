@@ -3687,8 +3687,8 @@ namespace MobilePozitivApp
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f080044
-			public const int LoginLogo = 2131230788;
+			// aapt resource value: 0x7f08003d
+			public const int LoginLogo = 2131230781;
 			
 			// aapt resource value: 0x7f080011
 			public const int abc_action_bar_home_description = 2131230737;
@@ -3783,8 +3783,8 @@ namespace MobilePozitivApp
 			// aapt resource value: 0x7f080023
 			public const int abc_toolbar_collapse_description = 2131230755;
 			
-			// aapt resource value: 0x7f080041
-			public const int app_name = 2131230785;
+			// aapt resource value: 0x7f08003a
+			public const int app_name = 2131230778;
 			
 			// aapt resource value: 0x7f080032
 			public const int appbar_scrolling_view_behavior = 2131230770;
@@ -3795,8 +3795,8 @@ namespace MobilePozitivApp
 			// aapt resource value: 0x7f080034
 			public const int character_counter_pattern = 2131230772;
 			
-			// aapt resource value: 0x7f080043
-			public const int closeDrawer = 2131230787;
+			// aapt resource value: 0x7f08003c
+			public const int closeDrawer = 2131230780;
 			
 			// aapt resource value: 0x7f080001
 			public const int common_google_play_services_enable_button = 2131230721;
@@ -3849,29 +3849,8 @@ namespace MobilePozitivApp
 			// aapt resource value: 0x7f080010
 			public const int common_signin_button_text_long = 2131230736;
 			
-			// aapt resource value: 0x7f08003c
-			public const int default_web_client_id = 2131230780;
-			
-			// aapt resource value: 0x7f08003d
-			public const int firebase_database_url = 2131230781;
-			
-			// aapt resource value: 0x7f08003a
-			public const int gcm_defaultSenderId = 2131230778;
-			
-			// aapt resource value: 0x7f08003e
-			public const int google_api_key = 2131230782;
-			
 			// aapt resource value: 0x7f08003b
-			public const int google_app_id = 2131230779;
-			
-			// aapt resource value: 0x7f08003f
-			public const int google_crash_reporting_api_key = 2131230783;
-			
-			// aapt resource value: 0x7f080040
-			public const int google_storage_bucket = 2131230784;
-			
-			// aapt resource value: 0x7f080042
-			public const int openDrawer = 2131230786;
+			public const int openDrawer = 2131230779;
 			
 			// aapt resource value: 0x7f080035
 			public const int password_toggle_content_description = 2131230773;
@@ -3888,8 +3867,8 @@ namespace MobilePozitivApp
 			// aapt resource value: 0x7f080039
 			public const int path_password_strike_through = 2131230777;
 			
-			// aapt resource value: 0x7f080045
-			public const int rememberMe = 2131230789;
+			// aapt resource value: 0x7f08003e
+			public const int rememberMe = 2131230782;
 			
 			// aapt resource value: 0x7f080024
 			public const int search_menu_title = 2131230756;

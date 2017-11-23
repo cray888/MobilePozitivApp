@@ -23,7 +23,6 @@ namespace MobilePozitivApp
     {
         WebView mWebView;
         private SupportToolbar mToolbar;
-        private ShareActionProvider mShareAction;
 
         string mName;
         string mHtmlBase64;
