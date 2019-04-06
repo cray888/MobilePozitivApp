@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "95239305751-u34k0pf6c24qaclptmot0r1b061f1ss8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xamarin.fcmexample",
+            "certificate_hash": "498a1908772495ea45dd9dd13135863288a70d7a"
+          }
+        },
+        {
           "client_id": "95239305751-0cpi9v6dekpni4v0l15qo1j97nio7rj9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -62,11 +70,27 @@
       },
       "oauth_client": [
         {
-          "client_id": "95239305751-qln49ci1es9rpdojpgpcul02nmu34a5u.apps.googleusercontent.com",
+          "client_id": "95239305751-nsmumv99i2enjpkjkk79d0ofnn7s68hf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.pozitiv.mobileapp",
+            "certificate_hash": "c472fe7d881e6d77885c7557f7682759b79fb5de"
+          }
+        },
+        {
+          "client_id": "95239305751-1l3scr1em287bnu7n7um4330b53cv8g1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "ru.pozitiv.mobileapp",
             "certificate_hash": "498a1908772495ea45dd9dd13135863288a70d7c"
+          }
+        },
+        {
+          "client_id": "95239305751-0jaiogibd53lodvh2kp5skohcnvsnfg5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.pozitiv.mobileapp",
+            "certificate_hash": "dcd02ee062a2a34b89c8b600e21175e51c001efe"
           }
         },
         {
